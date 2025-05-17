@@ -1,0 +1,36 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_form {
+    width: 300px;
+    padding: 2rem;
+    text-align: center;
+    background-color: green;
+    border-radius: 8px;
+}
+
+.login_form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    box-sizing: border-box;
+}
+
+.login_form button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+
+.register {
+    margin-top: 1rem;
+}
+
+.register a {
+    text-decoration: none;
+}
