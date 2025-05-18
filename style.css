@@ -172,3 +172,39 @@ section {
     margin-bottom: 1rem;
     font-weight: bold;
 }
+
+/* Base styles already set for larger screens */
+
+@media screen and (max-width: 768px) {
+    /* For smaller screens (tablets and phones) */
+    
+    h1 {
+        font-size: 3rem; /* Smaller title */
+        margin-top: 2rem;
+    }
+
+    .panel {
+        width: 80%; /* Make the panel width more responsive */
+        grid-template-rows: 1fr; /* Stack the session buttons */
+    }
+
+    .timer {
+        width: 22rem; /* Smaller timer circle */
+        height: 22rem;
+    }
+
+    .circle {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .controls button {
+        font-size: 2rem; /* Adjust button size */
+        padding: 1rem 1.5rem;
+    }
+
+    .settings input {
+        width: 60px; /* Smaller input box */
+        font-size: 1.3rem;
+    }
+}
