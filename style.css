@@ -32,12 +32,13 @@ i {
 
 h1 {
     font-size: 3.5rem;
+    margin-top: 4rem;
 }
 
 section {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: auto;
 }
 
 .container {
@@ -123,6 +124,18 @@ section {
     margin-top: 4rem;
 }
 
+.settings {
+    margin-top: 4rem;
+    height: 100%;
+    background-color: var(--color-primary);
+    font-size: 1.6rem;
+    font-family: 'Open sans', sans-serif;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+
+
 .controls button {
     background-color: transparent;
     color: var(--color-font);
@@ -148,12 +161,14 @@ section {
 
 .settings label {
     margin: 0.5rem 0;
+    
 }
 
 .settings input {
-    width: 60px;
+    width: 50px;
     padding: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-align: center;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
