@@ -1,19 +1,32 @@
 body {
     height: 100vh;
     margin: 0;
-    background-color: rgb(142, 240, 152);
+    background: linear-gradient(#d0f0c0, #60c9a2);
 }
 
 .login_logo {
-    padding: 0.25rem;
-    border-bottom: 2px solid white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.25rem 2rem;
+}
+
+.login_logo h1 {
+    color: #2e7d32;
+    cursor: pointer;
+}
+
+.login_logo img {
+    height: 30px;
+    width: 30px;
+    margin-right: 0.5rem;
 }
 
 .login_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4rem;
+    padding: 2rem;
 }
 
 .login_form {
@@ -34,14 +47,23 @@ body {
 
 .login_form button {
     width: 75%;
-    padding: 0.5rem;
+    padding: 0.75rem;
     margin-top: 1.5rem;
     border: none;
     border-radius: 40px;
     color: white;
     background-color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login_form button:hover {
+  background-color: #2e7d32;
 }
 
 .register a {
-    text-decoration: none;
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: bold;
 }
