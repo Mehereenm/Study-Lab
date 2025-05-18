@@ -2,9 +2,10 @@ let pomoTitle = document.getElementById("Pomodoro");
 let sbreakTitle = document.getElementById("Short");
 let lbreakTitle = document.getElementById("Long");
 
-let pomoTime = 25; // default Pomodoro time in minutes
-let sbreakTime = 1; // default short break time in minutes
-let lbreakTime = 15; // default long break time in minutes
+// Default times
+let pomoTime = 25; // Study time in minutes
+let sbreakTime = 5; // Short break time in minutes
+let lbreakTime = 15; // Long break time in minutes
 
 let seconds = 0;
 let minutes = pomoTime;
@@ -22,7 +23,7 @@ function updateDisplay() {
 function selectSession(session) {
     clearInterval(interval);
     isRunning = false;
-    // Reset the timer
+    // Update the active session
     if (session === 'Pomodoro') {
         minutes = pomoTime;
         pomoTitle.classList.add("active");
@@ -101,11 +102,25 @@ function reset() {
     document.getElementById("start").innerHTML = `<i class="fa-solid fa-play"></i>`;
 }
 
+// Function to update times based on user input
+function updateTimerSettings() {
+    pomoTime = parseInt(document.getElementById("studyTime").value) || 25;
+    sbreakTime = parseInt(document.getElementById("shortBreakTime").value) || 5;
+    lbreakTime = parseInt(document.getElementById("longBreakTime").value) || 15;
+    selectSession('Pomodoro'); // Reset to Pomodoro session after updating times
+}
+
 // Event listeners for buttons
 document.getElementById("start").addEventListener("click", start);
 document.getElementById("reset").addEventListener("click", reset);
 
+// Event listener for time input changes
+document.getElementById("studyTime").addEventListener("input", updateTimerSettings);
+document.getElementById("shortBreakTime").addEventListener("input", updateTimerSettings);
+document.getElementById("longBreakTime").addEventListener("input", updateTimerSettings);
+
 // Initialize display on page load
 window.onload = () => {
-    selectSession('Pomodoro'); // Start with Pomodoro session on page load
+    updateDisplay(); // Set initial display
+    selectSession('Pomodoro'); // Start with Pomodoro session
 };

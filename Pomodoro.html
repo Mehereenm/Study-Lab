@@ -19,11 +19,23 @@
     <section>
         <div class="container">
             <h1>Pomodoro</h1>
+
             <div class="panel">
                 <p id="Pomodoro" class="active" onclick="selectSession('Pomodoro')">Pomodoro</p>
                 <p id="Short" onclick="selectSession('Short')">Short Break</p>
                 <p id="Long" onclick="selectSession('Long')">Long Break</p>
             </div>
+
+            <!-- Time setting inputs -->
+            <div class="settings">
+                <label for="studyTime">Study Time (minutes):</label>
+                <input type="number" id="studyTime" value="25" min="1" />
+                <label for="shortBreakTime">Short Break Time (minutes):</label>
+                <input type="number" id="shortBreakTime" value="5" min="1" />
+                <label for="longBreakTime">Long Break Time (minutes):</label>
+                <input type="number" id="longBreakTime" value="15" min="1" />
+            </div>
+
             <div class="timer">
                 <div class="circle">
                     <div class="time">
@@ -33,6 +45,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="controls">
                 <button id="start"><i class="fa-solid fa-play"></i></button>
                 <button id="reset"><i class="fa-solid fa-rotate-right"></i></button>

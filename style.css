@@ -1,5 +1,5 @@
 :root {
-    font-size: 62.53%;
+    font-size: 72.53%;
 
     --color-primary: hsl(140, 52%, 81%);
     --color-secondary: hsl(238, 68%, 82%);
@@ -23,6 +23,7 @@ html, body {
 
 p, i, h1 {
     color: var(--color-font);
+    font-weight: bold; 
 }
 
 i {
@@ -30,7 +31,7 @@ i {
 }
 
 h1 {
-    font-size: 3.2rem;
+    font-size: 3.5rem;
 }
 
 section {
@@ -40,7 +41,7 @@ section {
 }
 
 .container {
-    width: min(42.5rem, 100%);
+    width: min(47.5rem, 100%);
     margin-inline: auto;
     padding-inline: 2rem;
     display: flex;
@@ -138,3 +139,21 @@ section {
     border-radius: 4rem;
 }
 
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.settings label {
+    margin: 0.5rem 0;
+}
+
+.settings input {
+    width: 60px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
