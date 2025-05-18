@@ -1,0 +1,111 @@
+let pomoTitle = document.getElementById("Pomodoro");
+let sbreakTitle = document.getElementById("Short");
+let lbreakTitle = document.getElementById("Long");
+
+let pomoTime = 25; // default Pomodoro time in minutes
+let sbreakTime = 1; // default short break time in minutes
+let lbreakTime = 15; // default long break time in minutes
+
+let seconds = 0;
+let minutes = pomoTime;
+let interval;
+let isRunning = false;
+let breakCount = 0;
+
+// Update display function
+function updateDisplay() {
+    document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+}
+
+// Select session (Pomodoro, Short Break, Long Break)
+function selectSession(session) {
+    clearInterval(interval);
+    isRunning = false;
+    // Reset the timer
+    if (session === 'Pomodoro') {
+        minutes = pomoTime;
+        pomoTitle.classList.add("active");
+        sbreakTitle.classList.remove("active");
+        lbreakTitle.classList.remove("active");
+    } else if (session === 'Short') {
+        minutes = sbreakTime;
+        sbreakTitle.classList.add("active");
+        pomoTitle.classList.remove("active");
+        lbreakTitle.classList.remove("active");
+    } else if (session === 'Long') {
+        minutes = lbreakTime;
+        lbreakTitle.classList.add("active");
+        sbreakTitle.classList.remove("active");
+        pomoTitle.classList.remove("active");
+    }
+    seconds = 0;
+    updateDisplay();
+}
+
+// Timer function
+function timer() {
+    if (seconds === 0) {
+        if (minutes === 0) {
+            if (breakCount % 2 === 0) {
+                alert("Time's up! Take a short break.");
+                minutes = sbreakTime;
+                seconds = 0;
+                breakCount++;
+                sbreakTitle.classList.add("active");
+                pomoTitle.classList.remove("active");
+            } else if (breakCount % 2 !== 0 && breakCount === 1) {
+                alert("Short break over! Start working!");
+                minutes = pomoTime;
+                seconds = 0;
+                breakCount++;
+                sbreakTitle.classList.remove("active");
+                pomoTitle.classList.add("active");
+            } else {
+                alert("Time's up! Take a long break.");
+                minutes = lbreakTime;
+                seconds = 0;
+                breakCount = 0;
+                lbreakTitle.classList.add("active");
+                sbreakTitle.classList.remove("active");
+            }
+        } else {
+            seconds = 59;
+            minutes--;
+        }
+    } else {
+        seconds--;
+    }
+
+    updateDisplay();
+}
+
+// Start function
+function start() {
+    if (!isRunning) {
+        interval = setInterval(timer, 1000);
+        isRunning = true;
+        document.getElementById("start").innerHTML = `<i class="fa-solid fa-pause"></i>`;
+    } else {
+        clearInterval(interval);
+        isRunning = false;
+        document.getElementById("start").innerHTML = `<i class="fa-solid fa-play"></i>`;
+    }
+}
+
+// Reset function
+function reset() {
+    clearInterval(interval);
+    isRunning = false;
+    selectSession('Pomodoro'); // Reset to Pomodoro session
+    document.getElementById("start").innerHTML = `<i class="fa-solid fa-play"></i>`;
+}
+
+// Event listeners for buttons
+document.getElementById("start").addEventListener("click", start);
+document.getElementById("reset").addEventListener("click", reset);
+
+// Initialize display on page load
+window.onload = () => {
+    selectSession('Pomodoro'); // Start with Pomodoro session on page load
+};

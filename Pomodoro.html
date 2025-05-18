@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,11 +19,10 @@
     <section>
         <div class="container">
             <h1>Pomodoro</h1>
-                
             <div class="panel">
-                <p id="Pomodoro" class="active">Pomodoro</p>
-                <p id="Short">Short Break</p>
-                <p id="Long">Long Break</p>
+                <p id="Pomodoro" class="active" onclick="selectSession('Pomodoro')">Pomodoro</p>
+                <p id="Short" onclick="selectSession('Short')">Short Break</p>
+                <p id="Long" onclick="selectSession('Long')">Long Break</p>
             </div>
             <div class="timer">
                 <div class="circle">
@@ -35,10 +34,8 @@
                 </div>
             </div>
             <div class="controls">
-                <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
-                <button id="stop"><i class="fa-solid fa-pause"></i></button>
+                <button id="start"><i class="fa-solid fa-play"></i></button>
                 <button id="reset"><i class="fa-solid fa-rotate-right"></i></button>
-                <a  href="/"></a>
             </div>
         </div>
     </section>
