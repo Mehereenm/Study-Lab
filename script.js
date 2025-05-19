@@ -13,10 +13,22 @@ let interval;
 let isRunning = false;
 let breakCount = 0;
 
+//SESSION TRACKING
+let sessionCount = 0;
+const notificationSound = new Audio('sweet_alarm_tone.mp3');
+
 // Update display function
 function updateDisplay() {
     document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
     document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+}
+
+function playNotificationSound() {
+    if (!notificationSound.paused) {
+        notificationSound.pause();        // Pause the sound if it's already playing
+        notificationSound.currentTime = 0; // Reset the sound to the beginning
+    }
+    notificationSound.play();            // Play the sound
 }
 
 // Select session (Pomodoro, Short Break, Long Break)
@@ -49,7 +61,8 @@ function timer() {
     if (seconds === 0) {
         if (minutes === 0) {
             if (breakCount % 2 === 0) {
-                alert("Time's up! Take a short break.");
+                playNotificationSound();
+                alert("Great job! Time to take a well deserved break. (^o^)/");
                 minutes = sbreakTime;
                 seconds = 0;
                 breakCount++;
@@ -57,6 +70,7 @@ function timer() {
                 pomoTitle.classList.remove("active");
             } else if (breakCount % 2 !== 0 && breakCount === 1) {
                 alert("Short break over! Start working!");
+                playNotificationSound();
                 minutes = pomoTime;
                 seconds = 0;
                 breakCount++;
@@ -91,6 +105,8 @@ function start() {
         clearInterval(interval);
         isRunning = false;
         document.getElementById("start").innerHTML = `<i class="fa-solid fa-play"></i>`;
+        notificationSound.pause();        // Stop the sound when paused
+        notificationSound.currentTime = 0;
     }
 }
 
@@ -124,3 +140,5 @@ window.onload = () => {
     updateDisplay(); // Set initial display
     selectSession('Pomodoro'); // Start with Pomodoro session
 };
+
+
