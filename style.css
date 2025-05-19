@@ -1,0 +1,74 @@
+:root {
+    font-size: 72.53%;
+
+    --color-primary: hsl(140, 52%, 81%);
+    --color-secondary: hsl(238, 68%, 82%);
+    --color-font: hsla(0, 0%, 100%, 0.982);
+    --color-title: hsl(140, 58%, 54%);
+    --color-nav: hsl(0, 0%, 0%);
+
+    --color-shadow: hsl(200, 100%, 91%);
+    --color-hover:hsl(238, 78%, 69%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    background-color: var(--color-primary);
+    font-size: 1.6rem;
+    font-family: 'Open sans', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.4rem 2rem;
+    background-color: var(--color-nav);
+    color: var(--color-primary);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar .logo a {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-title);
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--color-hover);
+}
+
+/* Active Link Style */
+.nav-links .active {
+    font-weight: bold;
+    color: var(--color-hover);
+}
