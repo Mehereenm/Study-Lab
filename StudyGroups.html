@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Groups</title>
+  <link rel="stylesheet" href="pomstyle.css" />
+  <style>
+    h2, label {
+      color: var(--color-font);
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    section {
+      padding-top: 8rem;
+    }
+
+    .container {
+      max-width: 600px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .group-box {
+      background-color: hsla(238, 68%, 82%, 0.1);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 10px var(--color-shadow);
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+
+    .group-box label {
+      display: block;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background-color: var(--color-title);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    ul li {
+      background-color: var(--color-secondary);
+      color: white;
+      margin-bottom: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    ul li:hover {
+      background-color: var(--color-hover);
+    }
+
+    .chat-box {
+      background-color: hsla(238, 68%, 82%, 0.15);
+      padding: 1rem;
+      border-radius: 8px;
+      height: 200px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+      color: var(--color-font);
+      font-size: 1.3rem;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .chat-input input {
+      flex: 1;
+    }
+
+    @media screen and (max-width: 600px) {
+      .chat-input {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <a href="index.html">My Study Lab</a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="StudyGroups.html" class="active">Study Groups</a></li>
+    <li><a href="shared-notes.html">Shared Notes</a></li>
+    <li><a href="task-scheduler.html">Task Scheduler</a></li>
+    <li><a href="Pomodoro.html">Pomodoro</a></li>
+  </ul>
+</nav>
+
+
+
+  <!-- Main Section -->
+  <section>
+    <div class="container">
+
+      <!-- Create Group -->
+      <div class="group-box">
+        <label for="groupInput">Create or Join a Group:</label>
+        <input type="text" id="groupInput" placeholder="e.g. Math, CS, English" />
+        <button onclick="createGroup()">Enter</button>
+      </div>
+
+      <!-- List of Groups -->
+      <div class="group-box">
+        <label>Your Groups:</label>
+        <ul id="groupList"></ul>
+      </div>
+
+      <!-- Group Chat -->
+      <div class="group-box">
+        <label>Group Chat - <span id="currentGroupLabel">None</span></label>
+        <div class="chat-box" id="chatBox"></div>
+        <div class="chat-input">
+          <input type="text" id="chatMessage" placeholder="Type a message..." />
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+
+      <!-- Add Members -->
+      <div class="group-box">
+        <label>Add Member to Current Group:</label>
+        <input type="text" id="memberInput" placeholder="Username or email" />
+        <button onclick="addMember()">Add</button>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const groupList = document.getElementById('groupList');
+    const chatBox = document.getElementById('chatBox');
+    const currentGroupLabel = document.getElementById('currentGroupLabel');
+
+    let groups = [];
+    let messages = {};
+    let currentGroup = null;
+
+    function createGroup() {
+      const groupName = document.getElementById('groupInput').value.trim();
+      if (!groupName) return;
+
+      if (!groups.includes(groupName)) {
+        groups.push(groupName);
+        messages[groupName] = [];
+        const li = document.createElement('li');
+        li.textContent = groupName;
+        li.onclick = () => switchGroup(groupName);
+        groupList.appendChild(li);
+      }
+
+      switchGroup(groupName);
+      document.getElementById('groupInput').value = '';
+    }
+
+    function switchGroup(groupName) {
+      currentGroup = groupName;
+      currentGroupLabel.textContent = groupName;
+      renderChat();
+    }
+
+    function sendMessage() {
+      const msg = document.getElementById('chatMessage').value.trim();
+      if (!msg || !currentGroup) return;
+
+      messages[currentGroup].push("🧑 You: " + msg);
+      document.getElementById('chatMessage').value = '';
+      renderChat();
+    }
+
+    function renderChat() {
+      chatBox.innerHTML = '';
+      if (currentGroup && messages[currentGroup]) {
+        messages[currentGroup].forEach(m => {
+          const div = document.createElement('div');
+          div.className = 'chat-message';
+          div.textContent = m;
+          chatBox.appendChild(div);
+        });
+      }
+    }
+
+    function addMember() {
+      const user = document.getElementById('memberInput').value.trim();
+      if (user && currentGroup) {
+        alert(`${user} added to ${currentGroup} (mock only)`);
+        document.getElementById('memberInput').value = '';
+      }
+    }
+  </script>
+
+</body>
+</html>
