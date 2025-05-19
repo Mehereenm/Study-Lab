@@ -4,8 +4,11 @@
     --color-primary: hsl(140, 52%, 81%);
     --color-secondary: hsl(238, 68%, 82%);
     --color-font: hsla(0, 0%, 100%, 0.982);
+    --color-title: hsl(140, 58%, 54%);
+    --color-nav: hsl(0, 0%, 0%);
 
     --color-shadow: hsl(200, 100%, 91%);
+    --color-hover:hsl(238, 78%, 69%);
 }
 
 * {
@@ -39,6 +42,7 @@ section {
     display: flex;
     align-items: center;
     height: auto;
+    padding-top: 6rem;
 }
 
 .container {
@@ -49,6 +53,7 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 4rem;
 }
 
 .panel {
@@ -207,3 +212,54 @@ section {
         font-size: 1.3rem;
     }
 }
+
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.4rem 2rem;
+    background-color: var(--color-nav);
+    color: var(--color-primary);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar .logo a {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-title);
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--color-hover);
+}
+
+/* Active Link Style */
+.nav-links .active {
+    font-weight: bold;
+    color: var(--color-hover);
+}
+
