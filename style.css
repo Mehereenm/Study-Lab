@@ -1,0 +1,433 @@
+:root {
+    font-size: 72.53%;
+
+    --color-secondary: hsl(238, 68%, 82%);
+    --color-font: hsla(0, 0%, 100%, 0.982);
+    --color-title: hsl(140, 58%, 54%);
+    --color-nav: hsl(0, 0%, 0%);
+
+    --color-shadow: hsl(200, 100%, 91%);
+    --color-hover:hsl(238, 78%, 69%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100vh;
+    font-size: 1.6rem;
+    font-family: 'Open sans', sans-serif;
+    background: linear-gradient(#d0f0c0, #60c9a2);
+    margin: 0;
+}
+
+
+p, i, h1 {
+    color: var(--color-font);
+    font-weight: bold; 
+}
+
+i {
+    font-size: 3.2rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-top: 4rem;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    min-height: 100vh; 
+    padding-top: 6rem;
+    flex-direction: column;
+}
+
+
+.container {
+    width: min(47.5rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 4rem;
+}
+
+.panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    width: 35rem;
+    margin-block: 5rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    -webkit-box-shadow: 0 0 15px 10px var(--color-shadow);
+    box-shadow: 0 0 15px 10px var(--color-shadow);
+}
+
+.panel p {
+    opacity: .8;
+    transition: 1s ease-in;
+}
+
+.panel p.active {
+    opacity: 1;
+    color: var(--color-secondary);
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    --webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow);
+    box-shadow: 0px 0px 15px 10px var(--color-shadow);
+}
+
+.circle {
+    width: 26rem;
+    height: 26rem;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circle::before {
+    content: '';
+    width: 95%;
+    height: 95%rem;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.time {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.time p {
+    font-size: 5.6rem;
+}
+
+.time p:nth-of-type(4) {
+    position: relative;
+    top: -5rem;
+    margin-inline: 1rem;
+}
+
+.controls {
+    margin-top: 4rem;
+}
+
+.settings {
+    margin-top: 4rem;
+    height: 100%;
+    font-size: 1.6rem;
+    font-family: 'Open sans', sans-serif;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+
+.controls button {
+    background-color: transparent;
+    color: var(--color-font);
+    font-size: 2.4rem;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.controls button:hover {
+    background-color: var(--color-secondary);
+    border-radius: 4rem;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.settings label {
+    margin: 0.5rem 0;
+    
+}
+
+.settings input {
+    width: 50px;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 768px) {
+    /* For smaller screens (tablets and phones) */
+    
+    h1 {
+        font-size: 3rem; /* Smaller title */
+        margin-top: 2rem;
+    }
+
+    .panel {
+        width: 80%; /* Make the panel width more responsive */
+        grid-template-rows: 1fr; /* Stack the session buttons */
+    }
+
+    .timer {
+        width: 22rem; /* Smaller timer circle */
+        height: 22rem;
+    }
+
+    .circle {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .controls button {
+        font-size: 2rem; /* Adjust button size */
+        padding: 1rem 1.5rem;
+    }
+
+    .settings input {
+        width: 60px; /* Smaller input box */
+        font-size: 1.3rem;
+    }
+}
+
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.4rem 2rem;
+    background-color: var(--color-nav);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar .logo a {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-title);
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--color-hover);
+}
+
+/* Active Link Style */
+.nav-links .active {
+    font-weight: bold;
+    color: var(--color-hover);
+}
+
+.navbar .icon {
+    display: none;
+}
+
+/* Sidebar (hidden by default) */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--color-nav);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 101;
+}
+
+.sidebar a {
+    margin-top: 1rem;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #f2f2f2;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: var(--color-hover);
+    color: black;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    /* Hide navbar links on small screens */
+    .nav-links {
+        display: none;
+    }
+
+    /* Show hamburger icon */
+    .navbar .icon {
+        display: block;
+    }
+
+    /* When hamburger clicked, display navbar links in sidebar */
+    .navbar.responsive .nav-links {
+        display: block;
+        width: 100%;
+    }
+
+    /* Sidebar visibility when hamburger is clicked */
+    .sidebar {
+        width: 0px;
+    }
+
+}
+
+/* Logo Styles */
+.login_logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.25rem 2rem;
+}
+
+.login_logo .logo-img {
+    height: 30px;
+    width: 30px;
+    margin-right: rem;
+    margin-top: 1rem;
+}
+
+.login_logo .logo-title {
+    color: #2e7d32;
+    cursor: pointer;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Form Wrapper */
+.login_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+}
+
+.login_form {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.login_form .login-title {
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 1rem;
+}
+
+/* Input Styles */
+.login_form .login_input input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Username and Password Input */
+.login_form .input-username,
+.login_form .input-password {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.login_form .login-btn {
+    width: 75%;
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login_form .login-btn:hover {
+  background-color: #2e7d32;
+}
+
+/* Register Link Styles */
+.login_form .register {
+    margin-top: 1rem;
+}
+
+.login_form .register-text {
+    font-size: 1rem;
+    color: #333;
+}
+
+.login_form .register-link {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login_form .register-link:hover {
+    text-decoration: underline;
+}
