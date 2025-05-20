@@ -39,35 +39,28 @@ h1 {
 }
 
 section {
-  padding-top: 8rem;
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding-top: 6rem;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 4rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
+    width: min(47.5rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 4rem;
 }
-
-.left-column,
-.right-column {
-  flex: 1 1 450px;
-  max-width: 450px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-
 
 .panel {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
-    width: 30rem;
+    width: 35rem;
     margin-block: 5rem;
     padding: 1rem;
     border-radius: 10rem;
@@ -145,7 +138,6 @@ section {
     margin-bottom: 2rem;
     font-weight: bold;
 }
-
 
 
 .controls button {
@@ -235,17 +227,6 @@ section {
     z-index: 100;
 }
 
-/* ensure nav links float right */
-.nav-links {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex: 1;
-    list-style: none;
-    margin-left: auto;
-}
-
-
 .navbar .logo a {
     font-size: 1.7rem;
     font-weight: bold;
@@ -253,30 +234,26 @@ section {
     color: var(--color-title);
 }
 
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
 .nav-links li {
     margin-left: 2rem;
-    padding: 0;
-    background: none;
-    border: none;
 }
 
 .nav-links a {
     font-size: 1.5rem;
     color: var(--color-secondary);
     text-decoration: none;
+    transition: color 0.3s ease;
     font-weight: bold;
-    padding: 0;
-    background: none;
-    border: none;
-    outline: none;            /* ✨ Prevent browser focus box */
 }
 
-.nav-links a:hover,
-.nav-links a:focus {
+.nav-links a:hover {
     color: var(--color-hover);
-    background: none;
-    text-shadow: 0 0 2px var(--color-hover);
-    outline: none;            /* ✨ Ensure no purple box from focus */
 }
 
 /* Active Link Style */
@@ -285,132 +262,66 @@ section {
     color: var(--color-hover);
 }
 
-h2, label {
-      color: var(--color-font);
-      font-size: 2.2rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-
-    section {
-      padding-top: 8rem;
-    }
-
-    .group-box {
-      background-color: hsla(238, 68%, 82%, 0.1);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 0 10px var(--color-shadow);
-      margin-bottom: 3rem;
-      width: 100%;
-    }
-
-    .group-box label {
-      display: block;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.75rem;
-      border-radius: 8px;
-      border: none;
-      text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      font-weight: bold;
-    }
-
-    button {
-      background-color: black;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-
-    button:hover {
-      background-color: var(--color-title);
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-      width: 100%;
-      text-align: center;
-    }
-
-    ul li {
-      background-color: var(--color-secondary);
-      color: white;
-      margin-bottom: 0.5rem;
-      padding: 0.75rem;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    ul li:hover {
-      background-color: var(--color-hover);
-    }
-
-    .chat-box {
-      background-color: hsla(238, 68%, 82%, 0.15);
-      padding: 1rem;
-      border-radius: 8px;
-      height: 200px;
-      overflow-y: auto;
-      margin-bottom: 1rem;
-      color: var(--color-font);
-      font-size: 1.3rem;
-    }
-
-    .chat-input {
-      display: flex;
-      gap: 1rem;
-      width: 100%;
-    }
-
-    .chat-input input {
-      flex: 1;
-    }
-
-    /* Wider and prettier chat area */
-.chat-section {
-  padding: 2rem;
-  background-color: hsla(238, 68%, 82%, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 0 10px var(--color-shadow);
-  flex: 1;
+.navbar .icon {
+    display: none;
 }
 
-.right-column {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem 0;
+/* Sidebar (hidden by default) */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--color-nav);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 101;
 }
 
-/* Optional: make chat box taller on larger screens */
-@media screen and (min-width: 900px) {
-  .chat-box {
-    height: 300px;
-  }
+.sidebar a {
+    margin-top: 1rem;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #f2f2f2;
+    display: block;
+    transition: 0.3s;
 }
 
+.sidebar a:hover {
+    background-color: var(--color-hover);
+    color: black;
+}
 
-    @media screen and (max-width: 600px) {
-      .chat-input {
-        flex-direction: column;
-      }
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
 
-      button {
+@media screen and (max-width: 768px) {
+    /* Hide navbar links on small screens */
+    .nav-links {
+        display: none;
+    }
+
+    /* Show hamburger icon */
+    .navbar .icon {
+        display: block;
+    }
+
+    /* When hamburger clicked, display navbar links in sidebar */
+    .navbar.responsive .nav-links {
+        display: block;
         width: 100%;
-      }
     }
+
+    /* Sidebar visibility when hamburger is clicked */
+    .sidebar {
+        width: 250px;
+    }
+}
