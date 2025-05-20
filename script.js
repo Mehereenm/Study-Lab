@@ -141,4 +141,14 @@ window.onload = () => {
     selectSession('Pomodoro'); // Start with Pomodoro session
 };
 
+// Function to open the sidebar
+function toggleSidebar() {
+    const sidebar = document.getElementById("mySidebar");
+    sidebar.style.width = "250px"; 
+}
 
+// Function to close the sidebar
+function closeNav() {
+    const sidebar = document.getElementById("mySidebar");
+    sidebar.style.width = "0"; 
+}

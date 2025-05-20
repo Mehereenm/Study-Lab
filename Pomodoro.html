@@ -25,10 +25,21 @@
             <li><a href="study-groups.html">Study Groups</a></li>
             <li><a href="shared-notes.html">Shared Notes</a></li>
             <li><a href="task-scheduler.html">Task Scheduler</a></li>
-            <li><a href="pomodoro.html" class="active">Pomodoro</a></li>
-            
+            <li><a href="pomodoro.html" class="active">Pomodoro</a></li> 
         </ul>
+        <a href="javascript:void(0);" class="icon" onclick="toggleSidebar()">
+            <i class="fa fa-bars"></i>
+        </a>
     </nav>
+
+    <!-- Sidebar (Hidden by default, shows when hamburger is clicked) -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="study-groups.html">Study Groups</a>
+        <a href="shared-notes.html">Shared Notes</a>
+        <a href="task-scheduler.html">Task Scheduler</a>
+        <a href="pomodoro.html" class="active">Pomodoro</a>
+    </div>
 
     <section>
         <div class="container">
@@ -68,7 +79,6 @@
     
         </div>
     </section>
-    
 
     <script src="./script.js"></script>
 </body>
