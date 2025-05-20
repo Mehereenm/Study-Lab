@@ -93,6 +93,23 @@ html, body {
     background-color: var(--color-hover);
 }
 
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-name {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #000;
+}
+
+.file-date {
+  font-size: 1.3rem;
+  color: #555;
+}
+
 .upload-btn {
   position: fixed;
   bottom: 30px;

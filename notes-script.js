@@ -26,8 +26,22 @@ async function loadFiles() {
   files.forEach(file => {
     const div = document.createElement('div');
     div.className = 'file-item';
-    const displayName = file.name.replace(/^\d+-/, ''); // strips the timestamp prefix
-    div.textContent = `${displayName} (Uploaded: ${new Date(file.time).toLocaleString()})`;
+
+    const fileInfo = document.createElement('div');
+    fileInfo.className = 'file-info';
+
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'file-name';
+    nameSpan.textContent = file.name.replace(/^\d+-/, '');
+
+    const dateSpan = document.createElement('span');
+    dateSpan.className = 'file-date';
+    dateSpan.textContent = new Date(file.time).toLocaleString();
+
+    fileInfo.appendChild(nameSpan);
+    fileInfo.appendChild(dateSpan);
+
+    div.appendChild(fileInfo);
     div.onclick = () => loadContent(file.name);
     list.appendChild(div);
   });
