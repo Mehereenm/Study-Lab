@@ -3,9 +3,9 @@ let sbreakTitle = document.getElementById("Short");
 let lbreakTitle = document.getElementById("Long");
 
 // Default times
-let pomoTime = 25; // Study time in minutes
-let sbreakTime = 5; // Short break time in minutes
-let lbreakTime = 15; // Long break time in minutes
+let pomoTime = 25; 
+let sbreakTime = 5; 
+let lbreakTime = 15; 
 
 let seconds = 0;
 let minutes = pomoTime;
@@ -13,11 +13,14 @@ let interval;
 let isRunning = false;
 let breakCount = 0;
 
+//current active session
+let currentSession = 'Pomodoro';
+
 //SESSION TRACKING
 let sessionCount = 0;
 const notificationSound = new Audio('sweet_alarm_tone.mp3');
 
-// Update display function
+// Update display for minutes and seconds
 function updateDisplay() {
     document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
     document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
@@ -28,13 +31,15 @@ function playNotificationSound() {
         notificationSound.pause();        // Pause the sound if it's already playing
         notificationSound.currentTime = 0; // Reset the sound to the beginning
     }
-    notificationSound.play();            // Play the sound
+    notificationSound.play();            
 }
 
 // Select session (Pomodoro, Short Break, Long Break)
 function selectSession(session) {
     clearInterval(interval);
     isRunning = false;
+    currentSession = session; 
+
     // Update the active session
     if (session === 'Pomodoro') {
         minutes = pomoTime;
@@ -105,7 +110,7 @@ function start() {
         clearInterval(interval);
         isRunning = false;
         document.getElementById("start").innerHTML = `<i class="fa-solid fa-play"></i>`;
-        notificationSound.pause();        // Stop the sound when paused
+        notificationSound.pause();        // Stop sound when paused
         notificationSound.currentTime = 0;
     }
 }
@@ -114,16 +119,21 @@ function start() {
 function reset() {
     clearInterval(interval);
     isRunning = false;
-    selectSession('Pomodoro'); // Reset to Pomodoro session
+    selectSession(currentSession); // Reset to the current session (preserve the active session)
     document.getElementById("start").innerHTML = `<i class="fa-solid fa-play"></i>`;
 }
 
 // Function to update times based on user input
 function updateTimerSettings() {
-    pomoTime = parseInt(document.getElementById("studyTime").value) || 25;
-    sbreakTime = parseInt(document.getElementById("shortBreakTime").value) || 5;
-    lbreakTime = parseInt(document.getElementById("longBreakTime").value) || 15;
-    selectSession('Pomodoro'); // Reset to Pomodoro session after updating times
+    // Update times based on active session
+    if (currentSession === 'Pomodoro') {
+        pomoTime = parseInt(document.getElementById("studyTime").value) || 25;
+    } else if (currentSession === 'Short') {
+        sbreakTime = parseInt(document.getElementById("shortBreakTime").value) || 5;
+    } else if (currentSession === 'Long') {
+        lbreakTime = parseInt(document.getElementById("longBreakTime").value) || 15;
+    }
+    selectSession(currentSession); // Preserve the active session after changing times
 }
 
 // Event listeners for buttons
@@ -144,11 +154,11 @@ window.onload = () => {
 // Function to open the sidebar
 function toggleSidebar() {
     const sidebar = document.getElementById("mySidebar");
-    sidebar.style.width = "250px"; 
+    sidebar.style.width = "250px"; // Set width to show sidebar
 }
 
 // Function to close the sidebar
 function closeNav() {
     const sidebar = document.getElementById("mySidebar");
-    sidebar.style.width = "0"; 
+    sidebar.style.width = "0"; // Set width to 0 to hide the sidebar
 }
