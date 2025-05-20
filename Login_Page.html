@@ -13,27 +13,29 @@
         <img src="pictures/study_lab_icon.png" class="logo-img">
         <h1 class="logo-title">Study Lab</h1>
     </div>
-
+    
     <!--Login Form-->
-    <div class="login_wrapper">
-        <div class="login_form">
-            <h1 class="login-title">Login</h1>
-        
-            <div class="login_input">
-                <input type="text" class="input-username" placeholder="Username" required>
-            </div>
+<div class="login_wrapper">
+    <form id="login-form" class="login_form">
+        <h1 class="login-title">Login</h1>
 
-            <div class="login_input">
-                <input type="password" class="input-password" placeholder="Password" required>
-            </div>
-
-            <button type="submit" class="login-btn">Log in</button>
-
-            <div class="register">
-                <p class="register-text">Don't have an account? <a href="#" class="register-link">Register</a></p>
-            </div>
+        <div class="login_input">
+            <input type="text" id="username" placeholder="Username" required>
         </div>
-    </div>
+
+        <div class="login_input">
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+
+        <button type="submit" class="login-btn">Log in</button>
+
+        <div class="register">
+            <p class="register-text">Don't have an account? <a href="#" class="register-link">Register</a></p>
+        </div>
+    </form>
+</div>
+
+<script src="login-script.js"></script>
 
 </body>
 </html>
