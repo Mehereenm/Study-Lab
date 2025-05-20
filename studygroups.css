@@ -235,6 +235,17 @@ section {
     z-index: 100;
 }
 
+/* ensure nav links float right */
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    list-style: none;
+    margin-left: auto;
+}
+
+
 .navbar .logo a {
     font-size: 1.7rem;
     font-weight: bold;
@@ -242,26 +253,30 @@ section {
     color: var(--color-title);
 }
 
-
-.nav-links {
-    display: flex;
-    list-style: none;
-}
-
 .nav-links li {
     margin-left: 2rem;
+    padding: 0;
+    background: none;
+    border: none;
 }
 
 .nav-links a {
     font-size: 1.5rem;
     color: var(--color-secondary);
     text-decoration: none;
-    transition: color 0.3s ease;
     font-weight: bold;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;            /* ✨ Prevent browser focus box */
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a:focus {
     color: var(--color-hover);
+    background: none;
+    text-shadow: 0 0 2px var(--color-hover);
+    outline: none;            /* ✨ Ensure no purple box from focus */
 }
 
 /* Active Link Style */
@@ -364,6 +379,31 @@ h2, label {
     .chat-input input {
       flex: 1;
     }
+
+    /* Wider and prettier chat area */
+.chat-section {
+  padding: 2rem;
+  background-color: hsla(238, 68%, 82%, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 0 10px var(--color-shadow);
+  flex: 1;
+}
+
+.right-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* Optional: make chat box taller on larger screens */
+@media screen and (min-width: 900px) {
+  .chat-box {
+    height: 300px;
+  }
+}
+
 
     @media screen and (max-width: 600px) {
       .chat-input {

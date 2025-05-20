@@ -23,41 +23,41 @@
   <section>
   <div class="container">
 
-    <div class="left-column">
-      <!-- Create Group -->
-      <div class="group-box">
-        <label for="groupInput">Create or Join a Group:</label>
-        <input type="text" id="groupInput" placeholder="e.g. Math, CS, English" />
-        <button onclick="createGroup()">Enter</button>
-      </div>
-
-      <!-- List of Groups -->
-      <div class="group-box">
-        <label>Your Groups:</label>
-        <ul id="groupList"></ul>
-      </div>
+  <div class="left-column">
+    <!-- Create Group -->
+    <div class="group-box">
+      <label for="groupInput">Create or Join a Group:</label>
+      <input type="text" id="groupInput" placeholder="e.g. Math, CS, English" />
+      <button onclick="createGroup()">Enter</button>
     </div>
 
-    <div class="right-column">
-      <!-- Group Chat -->
-      <div class="group-box">
-        <label>Group Chat - <span id="currentGroupLabel">None</span></label>
-        <div class="chat-box" id="chatBox"></div>
-        <div class="chat-input">
-          <input type="text" id="chatMessage" placeholder="Type a message..." />
-          <button onclick="sendMessage()">Send</button>
-        </div>
-      </div>
-
-      <!-- Add Members -->
-      <div class="group-box">
-        <label>Add Member to Current Group:</label>
-        <input type="text" id="memberInput" placeholder="Username or email" />
-        <button onclick="addMember()">Add</button>
-      </div>
+    <!-- List of Groups -->
+    <div class="group-box">
+      <label>Your Groups:</label>
+      <ul id="groupList"></ul>
     </div>
 
+    <!-- Add Members -->
+    <div class="group-box">
+      <label>Add Member to Current Group:</label>
+      <input type="text" id="memberInput" placeholder="Username or email" />
+      <button onclick="addMember()">Add</button>
+    </div>
   </div>
+
+  <div class="right-column">
+    <!-- Group Chat -->
+    <div class="group-box chat-section">
+      <label>Group Chat - <span id="currentGroupLabel">None</span></label>
+      <div class="chat-box" id="chatBox"></div>
+      <div class="chat-input">
+        <input type="text" id="chatMessage" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+</div>
 </section>
 
 
