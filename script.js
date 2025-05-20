@@ -456,3 +456,15 @@ function convertTime(time) {
   time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
+
+// Function to open the sidebar
+function toggleSidebar() {
+    const sidebar = document.getElementById("mySidebar");
+    sidebar.style.width = "250px"; 
+}
+
+// Function to close the sidebar
+function closeNav() {
+    const sidebar = document.getElementById("mySidebar");
+    sidebar.style.width = "0"; 
+}

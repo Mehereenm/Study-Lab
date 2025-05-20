@@ -1,7 +1,35 @@
+:root {
+    font-size: 80%;
+
+    --color-primary: hsl(140, 52%, 81%);
+    --color-secondary: hsl(238, 68%, 82%);
+    --color-font: hsla(0, 0%, 100%, 0.982);
+    --color-title: hsl(140, 58%, 54%);
+    --color-nav: hsl(0, 0%, 0%);
+
+    --color-shadow: hsl(200, 100%, 91%);
+    --color-hover:hsl(238, 78%, 69%);
+    --primary-clr: #b38add;
+    padding-bottom: 50px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans', sans-serif;
+}
+
 body {
     /* height: 100vh; */
     margin: 0;
     background: linear-gradient(#d0f0c0, #60c9a2);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
 }
 
 .login_logo {
@@ -70,16 +98,124 @@ body {
   font-weight: bold;
 }
 
-:root {
-  --primary-clr: #b38add;
-    
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.4rem 2rem;
+    background-color: var(--color-nav);
+    color: var(--color-primary);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+
+.navbar .logo a {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-title);
 }
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--color-hover);
+}
+
+/* Active Link Style */
+.nav-links .active {
+    font-weight: bold;
+    color: var(--color-hover);
+}
+
+.navbar .icon {
+    display: none;
+}
+
+/* Sidebar (hidden by default) */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--color-nav);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 101;
+}
+
+.sidebar a {
+    margin-top: 1rem;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #f2f2f2;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: var(--color-hover);
+    color: black;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    /* Hide navbar links on small screens */
+    .nav-links {
+        display: none;
+    }
+
+    /* Show hamburger icon */
+    .navbar .icon {
+        display: block;
+    }
+
+    /* When hamburger clicked, display navbar links in sidebar */
+    .navbar.responsive .nav-links {
+        display: block;
+        width: 100%;
+    }
+
+    /* Sidebar visibility when hamburger is clicked */
+    .sidebar {
+        width: 0px;
+    }
+}
+
+
+
+
+/* ---Calendar style--- */
+
 /* nice scroll bar */
 ::-webkit-scrollbar {
   width: 5px;
@@ -93,15 +229,7 @@ body {
   border-radius: 50px;
 }
 
-body {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 30px;
-  background-color: #e2e1dc;
-}
+
 .container {
   position: relative;
   width: 1200px;
@@ -110,15 +238,17 @@ body {
   padding: 5px;
   color: #fff;
   display: flex;
+  top: 75px;
 
   border-radius: 10px;
-  background: linear-gradient(#d0f0c0, #60c9a2);
+  background: #d0f0c0;
 }
 .left {
   width: 60%;
   padding: 20px;
 }
 .calendar {
+
   position: relative;
   width: 100%;
   height: 100%;
