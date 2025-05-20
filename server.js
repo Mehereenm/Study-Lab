@@ -54,6 +54,20 @@ app.get('/file', (req, res) => {
   res.sendFile(filePath);
 });
 
+app.delete('/file', (req, res) => {
+  const fileName = req.query.name;
+  const filePath = path.join(__dirname, 'uploads', fileName);
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).send('File not found');
+  }
+
+  fs.unlink(filePath, (err) => {
+    if (err) return res.status(500).send('Error deleting file');
+    res.sendStatus(200);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

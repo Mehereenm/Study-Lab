@@ -97,17 +97,24 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .file-name {
   font-weight: bold;
   font-size: 1.6rem;
   color: #000;
+  flex: 1; /* Allow name to take remaining space */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.file-date {
+file-date {
   font-size: 1.3rem;
   color: #555;
+  white-space: nowrap;
 }
 
 .upload-btn {
@@ -131,4 +138,18 @@ html, body {
 
 input[type="file"] {
   display: none;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn i {
+  pointer-events: none; /* So button receives the click */
 }

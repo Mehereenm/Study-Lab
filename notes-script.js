@@ -38,13 +38,31 @@ async function loadFiles() {
     dateSpan.className = 'file-date';
     dateSpan.textContent = new Date(file.time).toLocaleString();
 
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '<i class="fa-solid fa-x"></i>';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.onclick = (e) => {
+      e.stopPropagation(); // Prevent triggering file open
+      deleteFile(file.name);
+    };
+
     fileInfo.appendChild(nameSpan);
     fileInfo.appendChild(dateSpan);
+    fileInfo.appendChild(deleteBtn);
 
     div.appendChild(fileInfo);
     div.onclick = () => loadContent(file.name);
     list.appendChild(div);
   });
+}
+
+async function deleteFile(fileName) {
+  if (confirm('Are you sure you want to delete this file?')) {
+    await fetch(`/file?name=${encodeURIComponent(fileName)}`, {
+      method: 'DELETE'
+    });
+    loadFiles(); // refresh list
+  }
 }
 
 function loadContent(fileName) {
