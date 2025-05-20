@@ -1,0 +1,155 @@
+:root {
+    font-size: 72.53%;
+
+    --color-primary: hsl(140, 52%, 81%);
+    --color-secondary: hsl(238, 68%, 82%);
+    --color-font: hsla(0, 0%, 100%, 0.982);
+    --color-title: hsl(140, 58%, 54%);
+    --color-nav: hsl(0, 0%, 0%);
+
+    --color-shadow: hsl(200, 100%, 91%);
+    --color-hover:hsl(238, 78%, 69%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    background-color: var(--color-primary);
+    font-size: 1.6rem;
+    font-family: 'Open sans', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.4rem 2rem;
+    background-color: var(--color-nav);
+    color: var(--color-primary);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar .logo a {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-title);
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--color-hover);
+}
+
+/* Active Link Style */
+.nav-links .active {
+    font-weight: bold;
+    color: var(--color-hover);
+}
+
+/*  */
+
+#fileList {
+  margin-top: 9rem;
+  padding: 2rem;
+}
+
+.file-item {
+  cursor: pointer;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.file-item:hover {
+    background-color: var(--color-hover);
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.file-name {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #000;
+  flex: 1; /* Allow name to take remaining space */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+file-date {
+  font-size: 1.3rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+.upload-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: black;
+  color: white;
+  font-size: 32px;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.upload-btn:hover {
+    color: var(--color-hover);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn i {
+  pointer-events: none; /* So button receives the click */
+}
