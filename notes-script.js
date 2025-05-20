@@ -65,6 +65,21 @@ async function deleteFile(fileName) {
   }
 }
 
+fileInput.addEventListener('change', async () => {
+  if (!fileInput.files[0]) return; // no file selected
+
+  const formData = new FormData();
+  formData.append('document', fileInput.files[0]);
+
+  await fetch('/upload', {
+    method: 'POST',
+    body: formData
+  });
+
+  fileInput.value = ''; // reset input
+  loadFiles();
+});
+
 function loadContent(fileName) {
   const url = `/file?name=${encodeURIComponent(fileName)}`;
   window.open(url, '_blank');
