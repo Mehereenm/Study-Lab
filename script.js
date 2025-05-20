@@ -3,7 +3,7 @@ let sbreakTitle = document.getElementById("Short");
 let lbreakTitle = document.getElementById("Long");
 
 // Default times
-let pomoTime = 0; 
+let pomoTime = 25; 
 let sbreakTime = 5; 
 let lbreakTime = 15; 
 
