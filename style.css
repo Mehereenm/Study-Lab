@@ -1,7 +1,6 @@
 :root {
     font-size: 72.53%;
 
-    --color-primary: hsl(140, 52%, 81%);
     --color-secondary: hsl(238, 68%, 82%);
     --color-font: hsla(0, 0%, 100%, 0.982);
     --color-title: hsl(140, 58%, 54%);
@@ -18,11 +17,13 @@
 }
 
 html, body {
-    height: 100%;
-    background-color: var(--color-primary);
+    min-height: 100vh;
     font-size: 1.6rem;
     font-family: 'Open sans', sans-serif;
+    background: linear-gradient(#d0f0c0, #60c9a2);
+    margin: 0;
 }
+
 
 p, i, h1 {
     color: var(--color-font);
@@ -41,9 +42,12 @@ h1 {
 section {
     display: flex;
     align-items: center;
-    height: auto;
+    justify-content: center; 
+    min-height: 100vh; 
     padding-top: 6rem;
+    flex-direction: column;
 }
+
 
 .container {
     width: min(47.5rem, 100%);
@@ -105,7 +109,6 @@ section {
     width: 95%;
     height: 95%rem;
     border-radius: 50%;
-    background-color: var(--color-primary);
     position: absolute;
 }
 
@@ -132,7 +135,6 @@ section {
 .settings {
     margin-top: 4rem;
     height: 100%;
-    background-color: var(--color-primary);
     font-size: 1.6rem;
     font-family: 'Open sans', sans-serif;
     margin-bottom: 2rem;
@@ -152,7 +154,6 @@ section {
 
 .controls button:hover {
     background-color: var(--color-secondary);
-    color: var(--color-primary);
     border-radius: 4rem;
 }
 
@@ -220,7 +221,6 @@ section {
     align-items: center;
     padding: 2.4rem 2rem;
     background-color: var(--color-nav);
-    color: var(--color-primary);
     position: fixed;
     top: 0;
     width: 100%;
@@ -322,14 +322,12 @@ section {
 
     /* Sidebar visibility when hamburger is clicked */
     .sidebar {
-        width: 250px;
+        width: 0px;
     }
-}body {
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(#d0f0c0, #60c9a2);
+
 }
 
+/* Logo Styles */
 .login_logo {
     display: flex;
     justify-content: flex-start;
@@ -337,27 +335,33 @@ section {
     padding: 0.25rem 2rem;
 }
 
-.login_logo h1 {
+.login_logo .logo-img {
+    height: 30px;
+    width: 30px;
+    margin-right: rem;
+    margin-top: 1rem;
+}
+
+.login_logo .logo-title {
     color: #2e7d32;
     cursor: pointer;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
 }
 
-.login_logo img {
-    height: 30px;
-    width: 30x;
-    margin-right: 0.5rem;
-    cursor: pointer;
-}
-
+/* Form Wrapper */
 .login_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     padding: 2rem;
 }
 
 .login_form {
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     padding: 2rem;
     text-align: center;
     background-color: white;
@@ -365,7 +369,14 @@ section {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.login_form input {
+.login_form .login-title {
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 1rem;
+}
+
+/* Input Styles */
+.login_form .login_input input {
     width: 100%;
     padding: 0.5rem;
     margin: 0.5rem 0;
@@ -373,7 +384,18 @@ section {
     box-sizing: border-box;
 }
 
-.login_form button {
+/* Username and Password Input */
+.login_form .input-username,
+.login_form .input-password {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.login_form .login-btn {
     width: 75%;
     padding: 0.75rem;
     margin-top: 1.5rem;
@@ -386,12 +408,26 @@ section {
     transition: background-color 0.2s;
 }
 
-.login_form button:hover {
+.login_form .login-btn:hover {
   background-color: #2e7d32;
 }
 
-.register a {
-  color: #2e7d32;
-  text-decoration: none;
-  font-weight: bold;
+/* Register Link Styles */
+.login_form .register {
+    margin-top: 1rem;
+}
+
+.login_form .register-text {
+    font-size: 1rem;
+    color: #333;
+}
+
+.login_form .register-link {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login_form .register-link:hover {
+    text-decoration: underline;
 }
